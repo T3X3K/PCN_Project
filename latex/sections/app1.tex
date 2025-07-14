@@ -1,0 +1,20 @@
+\chapter{Appendix}
+
+\resp{Bains, Arman Singh}
+
+\section{Axelrod's Model}\label{ch:app1}
+
+A feature of Axelrod's model is that it's decentralized. It could be interesting though to see how the results might change if an external agent is introduced. I tested two cases, differing in how the external agent behaves. \\
+In the first case, the external agent is referred to as "dictator", as it's supposed to represent an autocratic figure which is able to impose his culture on the others. In this variant, according to a certain probability $p_d$, at each iteration a node at random is picked and the whole culture of the dictator is coercively copied onto him. \\
+In the second case, the external agent is referred to as the suasor, because it should be representing the case in which the agent is able to non-coercively influence the other nodes (for instance like cultural institutions are supposed to do). \\
+The simulations were done using five different cultural features and fifteen traits. The average of five replications over $10^4$ iterations can be seen in tables \ref{tab:dictator} and \ref{tab:suasor}. The network used was the same ones defined previously in chapter \ref{ch:1} for the basic implementation of Axelrod's model.
+\input{tables/all_results_dictator_e4}
+\input{tables/all_results_persuasor_e4}
+
+Despite the number of iterations being kept short, they are informative. In addition to them, a simulation of the behavior of the dictator has been run for $10^5$ iterations and is present in table \ref{tab:dictatore5}, though it was done only for a reduced number of graphs. Still, it highlights that even at subsequent timestamps the trends seen before persist. \\
+\input{tables/all_results_dictator_e4_simp}
+In particular, What seems to happen is that an external force may temporarily increase the number of cultural regions, but only because it's forcing random nodes to have a culture different from that of their neighbors, whom are possibly connected to a large connected component. Indeed, if such a force intervenes quite frequently, we see much less fragmentation. \\
+An additional experiment has been run, with the same conditions as in table \ref{tab:dictatore5} but with a slight change: this time, three dictators have been used. It was decided to make sure that their cultural traits were different from each other. Of course, this was inspired by Locke's and Montesquieu's concept of separation of powers \cite{locke_two_2023}\cite{montesquieu_lo_2005}, according to which separating the state in at least three bodies and having multiple powers competing with each other might alleviate the risks of having a single dictator overtaking everything and imposing his will. Table \ref{tab:mont} summarizes the results, showing that, especially at high probability of interaction, having multiple coercive agents will prevent the formation of a single giant connected component, and thus a uniform and homogeneous culture.
+\input{tables/all_results_dictator_mont_e5}
+
+\newpage
