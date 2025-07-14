@@ -1,0 +1,5 @@
+nodeID_from,nodeID_to,country_name,country_ISO3
+001,001,Malta,MLT
+001,002,Malta,MLT
+002,001,Malta,MLT
+002,002,Malta,MLT

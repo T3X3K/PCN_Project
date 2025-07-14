@@ -1,0 +1,5 @@
+nodeID_from,nodeID_to,country_name,country_ISO3,SCI
+001,001,Malta,MLT,4550848
+001,002,Malta,MLT,1799265
+002,001,Malta,MLT,1799265
+002,002,Malta,MLT,45155565

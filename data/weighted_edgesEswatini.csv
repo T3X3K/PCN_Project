@@ -1,0 +1,17 @@
+nodeID_from,nodeID_to,country_name,country_ISO3,SCI
+1,1,Eswatini,SWZ,5446384
+1,2,Eswatini,SWZ,2909368
+1,3,Eswatini,SWZ,3204322
+1,4,Eswatini,SWZ,3219159
+2,1,Eswatini,SWZ,2909368
+2,2,Eswatini,SWZ,9248178
+2,3,Eswatini,SWZ,3263430
+2,4,Eswatini,SWZ,2605301
+3,1,Eswatini,SWZ,3204322
+3,2,Eswatini,SWZ,3263430
+3,3,Eswatini,SWZ,3900971
+3,4,Eswatini,SWZ,3445342
+4,1,Eswatini,SWZ,3219159
+4,2,Eswatini,SWZ,2605301
+4,3,Eswatini,SWZ,3445342
+4,4,Eswatini,SWZ,14622989

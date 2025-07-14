@@ -1,0 +1,17 @@
+nodeID_from,nodeID_to,country_name,country_ISO3,SCI
+1,1,Sierra Leone,SLE,12725048
+1,2,Sierra Leone,SLE,1204225
+1,3,Sierra Leone,SLE,2305748
+1,4,Sierra Leone,SLE,1528455
+2,1,Sierra Leone,SLE,1204225
+2,2,Sierra Leone,SLE,13485239
+2,3,Sierra Leone,SLE,1338240
+2,4,Sierra Leone,SLE,1940756
+3,1,Sierra Leone,SLE,2305748
+3,2,Sierra Leone,SLE,1338240
+3,3,Sierra Leone,SLE,13400395
+3,4,Sierra Leone,SLE,1711791
+4,1,Sierra Leone,SLE,1528455
+4,2,Sierra Leone,SLE,1940756
+4,3,Sierra Leone,SLE,1711791
+4,4,Sierra Leone,SLE,1983960
