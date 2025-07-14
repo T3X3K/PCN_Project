@@ -47,7 +47,7 @@ run <- function(g, n_traits, n_features) {
     V(g)$label <- lapply(1:vcount(g), function(x) sample(1:n_traits, n_features, replace=TRUE))
     active_pairs <- 1
     i <- 0
-    check_interval <- 1000  # Check active pairs every N steps
+    check_interval <- 1000  
 
     while (active_pairs != 0) {
       e2 <- sample(V(g), 1)
@@ -70,7 +70,7 @@ run <- function(g, n_traits, n_features) {
     }
 
 
-    # Final output
+    
     num_regions <- count_cultural_regions(g)
 
     return(num_regions)

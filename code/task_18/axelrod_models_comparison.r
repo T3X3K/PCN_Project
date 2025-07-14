@@ -90,7 +90,7 @@ all_data <- data.frame()
 
 for (i in 1:n_reps) {
   for (model in c("lattice", "ba", "ws", "sbm")) {
-    # Create network
+    
     g <- switch(model,
       lattice = make_lattice(c(10, 10)),
       ba      = sample_pa(100, m = 2, directed = FALSE),

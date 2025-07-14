@@ -50,7 +50,7 @@ run <- function(g, n_traits, n_features, p_dictator = 0) {
 
     active_pairs <- 1
     i <- 0
-    check_interval <- 1000  # Check active pairs every N steps
+    check_interval <- 1000  
     
     max_iter <- 5e4
     while (active_pairs != 0 && i < max_iter) {
@@ -84,7 +84,6 @@ run <- function(g, n_traits, n_features, p_dictator = 0) {
     }
 
 
-    # Final output
     num_regions <- count_cultural_regions(g)
 
     return(num_regions)

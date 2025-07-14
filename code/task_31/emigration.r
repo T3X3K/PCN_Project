@@ -5,10 +5,10 @@ library(purrr) |> suppressMessages()
 library(stringr) |> suppressMessages()
 library(magrittr) |> suppressMessages()
 library(ggraph) |> suppressMessages()
-r0_seq <- 10^seq(-3, 0, length.out = 20)  # try to keep it short at first
+r0_seq <- 10^seq(-3, 0, length.out = 20)  
 leave_vals <- c(0.0, 0.01, 0.05)
 enter_vals <- c(0.0, 0.01, 0.05)
-num_reps <- 20  # number of repetitions for averaging
+num_reps <- 20  
 L <- 10000
 m <- 0.2
 max_steps <- 10000
@@ -27,13 +27,13 @@ schelling_constrained_migration_1D <- function(L = 1000, r0 = 0.1, m = 0.2,
   
   state <- sample(c(rep(0, n_vac), rep(1, n_pos), rep(-1, n_neg)))
 
-  # Neighbor function for 1D
+  
   get_neighbors <- function(i) {
     nb <- c(i - 1, i + 1)
     nb[nb >= 1 & nb <= L]
   }
 
-  # Unhappy function
+  
   unhappy <- function(i, state) {
     if (state[i] == 0) return(FALSE)
     nb <- get_neighbors(i)
@@ -44,19 +44,19 @@ schelling_constrained_migration_1D <- function(L = 1000, r0 = 0.1, m = 0.2,
     return(frac < 0.5)
   }
   
-  # Initialize unhappy list
+  
   unhappy_agents <- which(sapply(1:L, function(i) unhappy(i, state)))
   vacancies <- which(state == 0)
   
-  # Loop until no unhappy agents or max steps
+  
   for (step in 1:max_total_steps) {
-    # 1. Run constrained movement (same as before)
-    if (length(unhappy_agents) == 0) break  # Stop if no unhappy agents
+    
+    if (length(unhappy_agents) == 0) break  
 
     agent <- sample(unhappy_agents, 1)
     vac <- sample(vacancies, 1)
     
-    # Check if move would improve happiness
+    
     nb <- get_neighbors(vac)
     occ <- nb[state[nb] != 0]
     if (length(occ) == 0) {
@@ -67,33 +67,33 @@ schelling_constrained_migration_1D <- function(L = 1000, r0 = 0.1, m = 0.2,
     }
     
     if (happy) {
-      # Move the agent
+      
       state[vac] <- state[agent]
       state[agent] <- 0
       vacancies[vacancies == vac] <- agent
     }
     
-    # Update unhappy list
+    
     unhappy_agents <- which(sapply(1:L, function(i) unhappy(i, state)))
 
-    # 2. Add emigration (majority leaves)
+    
     majority_indices <- which(state == 1)
     leavers <- majority_indices[runif(length(majority_indices)) < p_leave_majority]
     state[leavers] <- 0
-    vacancies <- union(vacancies, leavers)  # Add to vacancies
+    vacancies <- union(vacancies, leavers)  
 
-    # 3. Add immigration (minority enters)
+    
     vacancy_indices <- which(state == 0)
     arrivals <- vacancy_indices[runif(length(vacancy_indices)) < p_enter_minority]
     state[arrivals] <- -1
 
-    # Optional: If you want a stopping condition based on steady state
+    
     if (length(unhappy_agents) == 0) {
-      break  # Stop if no unhappy agents are left
+      break  
     }
   }
   
-  # Measure unhappiness of minority and majority
+  
   minority_sites <- which(state == -1)
   majority_sites <- which(state == 1)
 
@@ -117,7 +117,7 @@ for (leave in leave_vals) {
           p_enter_minority = enter,
           max_total_steps = max_steps
         )
-        res["majority"]  # only minority
+        res["majority"]  
       })
       avg <- mean(reps)
       results <- rbind(results, data.frame(

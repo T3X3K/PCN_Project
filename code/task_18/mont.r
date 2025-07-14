@@ -50,7 +50,7 @@ run <- function(g, n_traits, n_features, p_dictator = 0) {
 
     active_pairs <- 1
     i <- 0
-    check_interval <- 1000  # Check active pairs every N steps
+    check_interval <- 1000  
     
     max_iter <- 1e5
     while (active_pairs != 0 && i < max_iter) {
@@ -91,7 +91,7 @@ run <- function(g, n_traits, n_features, p_dictator = 0) {
     }
 
 
-    # Final output
+    
     num_regions <- count_cultural_regions(g)
 
     return(num_regions)
@@ -117,7 +117,7 @@ while (length(dictators) < 3) {
 
 
 model_names <- c("lattice", "sbm")
-p_dictator_values <- c(0, 0.0001, 0.001, 0.01, 0.1)  # Example values
+p_dictator_values <- c(0, 0.0001, 0.001, 0.01, 0.1)  
 
 all_results <- purrr::map_dfr(model_names, function(model) {
   g <- switch(model,

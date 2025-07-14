@@ -10,7 +10,7 @@ schelling_constrained_assimilation_1D <- function(L = 1000, r0 = 0.1, m = 0.2,
                                                   p_assimilation = 0.05,
                                                   max_iters = 10000) {
   
-  # Initial population counts
+  
   n_vac <- round(r0 * L)
   n_pos <- round((1 - r0) * (1 + m)/2 * L)
   n_neg <- round((1 - r0) * (1 - m)/2 * L)
@@ -19,7 +19,7 @@ schelling_constrained_assimilation_1D <- function(L = 1000, r0 = 0.1, m = 0.2,
     n_neg <- n_neg + (L - total_filled)
   }
   
-  # Initial state
+  
   state <- sample(c(rep(0, n_vac), rep(1, n_pos), rep(-1, n_neg)))
   
   get_neighbors <- function(i) {
@@ -40,7 +40,7 @@ schelling_constrained_assimilation_1D <- function(L = 1000, r0 = 0.1, m = 0.2,
   unhappy_agents <- which(sapply(1:L, function(i) unhappy(i, state)))
   vacancies <- which(state == 0)
 
-  max_iters <- 500  # or 1000 if you prefer
+  max_iters <- 500  
   no_change_steps <- 0
   last_unhappy_count <- Inf
   
@@ -48,7 +48,7 @@ schelling_constrained_assimilation_1D <- function(L = 1000, r0 = 0.1, m = 0.2,
   while (length(unhappy_agents) > 0 && iter < max_iters && no_change_steps < 10) {
     iter <- iter + 1
 
-    # Constrained move step
+    
     agent <- sample(unhappy_agents, 1)
     vac <- sample(vacancies, 1)
     
@@ -65,10 +65,10 @@ schelling_constrained_assimilation_1D <- function(L = 1000, r0 = 0.1, m = 0.2,
       vacancies[vacancies == vac] <- agent
     }
 
-    # Update unhappy list
+    
     unhappy_agents <- which(sapply(1:L, function(i) unhappy(i, state)))
     
-    # Assimilation step
+    
     for (i in 1:L) {
       if (state[i] == 0) next
       nb <- get_neighbors(i)
@@ -90,7 +90,7 @@ schelling_constrained_assimilation_1D <- function(L = 1000, r0 = 0.1, m = 0.2,
 
   }
   
-  # Final unhappiness of both groups
+  
   minority <- ifelse(n_pos < n_neg, 1, -1)
   majority <- -minority
   
@@ -122,7 +122,7 @@ for (p_assim in p_assim_vals) {
         m = 0.2,
         p_assimilation = p_assim
       )
-      res["minority"]  # or "majority"
+      res["minority"]  
     })
     avg <- mean(reps)
     results <- rbind(results, data.frame(
