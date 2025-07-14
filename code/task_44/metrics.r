@@ -1,7 +1,7 @@
 library(igraph)
 library(tidyverse)
 
-data_folder <- "data/"
+data_folder <- "../../data/task_44/"
 edge_files <- list.files(data_folder, pattern = "^weighted_edges.*\\.csv$", full.names = TRUE)
 
 results_list <- list()
